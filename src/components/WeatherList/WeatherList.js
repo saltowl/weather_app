@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from '../Weather/Weather';
 
 class WeatherList extends React.Component {
   constructor(props) {
@@ -7,7 +8,11 @@ class WeatherList extends React.Component {
   
   render() {
     return (
-      <div className="WeatherList"/>
+      <div className="WeatherList">
+          {this.props.cities.map(city => (
+              <Weather key={city.id} data={city} fetchWeather={() => this.props.fetchWeather(city.id, city.name)} />
+          ))}
+      </div>
     );
   }
 }

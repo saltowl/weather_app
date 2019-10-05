@@ -7,7 +7,7 @@ export const DELETE_CITY = 'DELETE_CITY';
 
 export const INITIAL_STATE = {
     'cities': [],
-    'nextCityId': 0
+    'nextCityId': 0   
 }
 
 export const DEFAULT_COORDS = '';
