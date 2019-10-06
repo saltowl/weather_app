@@ -3,6 +3,11 @@ import { combineReducers } from 'C:/Users/leven/AppData/Local/Microsoft/TypeScri
 
 const weatherReducer = (state = constants.INITIAL_STATE.weatherList, action = {}) => {
     let changedCities = [];
+
+    if (action.id === 0) {
+        return state;
+    }
+
     switch (action.type) {
         case constants.FETCH_WEATHER_PENDING:
             changedCities = state.cities.map(city => 
@@ -58,6 +63,10 @@ const weatherReducer = (state = constants.INITIAL_STATE.weatherList, action = {}
 };
 
 const currentCityReducer = (state = constants.INITIAL_STATE.currentCity, action = {}) => {
+    if (action.id !== 0) {
+        return state;
+    }
+    
     switch (action.type) {
         case constants.FETCH_WEATHER_PENDING:
             return {
