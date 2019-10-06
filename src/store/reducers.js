@@ -1,10 +1,11 @@
 import * as constants from '../constants';
+import { combineReducers } from 'C:/Users/leven/AppData/Local/Microsoft/TypeScript/3.6/node_modules/redux';
 
-const weatherReducer = (state = constants.INITIAL_STATE, action = {}) => {
+const weatherReducer = (state = constants.INITIAL_STATE.weatherList, action = {}) => {
     let changedCities = [];
     switch (action.type) {
         case constants.FETCH_WEATHER_PENDING:
-            changedCities = getCities(state).map(city => 
+            changedCities = state.cities.map(city => 
                     city.id === action.id ? {...city, pending: true} : city
                 );
             return {
@@ -13,7 +14,7 @@ const weatherReducer = (state = constants.INITIAL_STATE, action = {}) => {
             };
 
         case constants.FETCH_WEATHER_SUCCESS:
-            changedCities = getCities(state).map(city => 
+            changedCities = state.cities.map(city => 
                     city.id === action.id ? {...city, pending: false, weather: action.weather} : city
                 );
             return {
@@ -22,7 +23,7 @@ const weatherReducer = (state = constants.INITIAL_STATE, action = {}) => {
             };
 
         case constants.FETCH_WEATHER_ERROR:
-            changedCities = getCities(state).map(city => 
+            changedCities = state.cities.map(city => 
                     city.id === action.id ? {...city, pending: false, error: action.error} : city
                 );
             return {
@@ -34,18 +35,18 @@ const weatherReducer = (state = constants.INITIAL_STATE, action = {}) => {
                 changedCities = [
                     ...state.cities,
                     {
-                        id: getNextCityId(state),
+                        id: state.nextCityId,
                         name: action.name
                     }
                 ] 
                 return {
                     ...state,
-                    nextCityId: getNextCityId(state) + 1,
+                    nextCityId: state.nextCityId + 1,
                     cities: changedCities
                 };
     
             case constants.DELETE_CITY:
-                changedCities = getCities(state).filter(city => city.id !== action.id);
+                changedCities = state.cities.filter(city => city.id !== action.id);
                 return {
                     ...state,
                     cities: changedCities
@@ -56,7 +57,38 @@ const weatherReducer = (state = constants.INITIAL_STATE, action = {}) => {
     }
 };
 
-export const getCities = state => state.cities;
-export const getNextCityId = state => state.nextCityId;
+const currentCityReducer = (state = constants.INITIAL_STATE.currentCity, action = {}) => {
+    switch (action.type) {
+        case constants.FETCH_WEATHER_PENDING:
+            return {
+                ...state,
+                pending: true
+            };
 
-export default weatherReducer;
+        case constants.FETCH_WEATHER_SUCCESS:
+            return {
+                ...state,
+                pending: false,
+                weather: action.weather
+            };
+
+        case constants.FETCH_WEATHER_ERROR:
+            return {
+                ...state,
+                pending: false,
+                error: action.error
+            };
+
+        default:
+            return state;
+    }
+};
+
+export const getCities = state => state.weatherList.cities;
+export const getNextCityId = state => state.weatherList.nextCityId;
+export const getCurrentCity = state => state.currentCity;
+
+export default combineReducers({
+    weatherList: weatherReducer,
+    currentCity: currentCityReducer
+});

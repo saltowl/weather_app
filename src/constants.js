@@ -6,8 +6,16 @@ export const ADD_CITY = 'ADD_CITY';
 export const DELETE_CITY = 'DELETE_CITY';
 
 export const INITIAL_STATE = {
-    'cities': [],
-    'nextCityId': 0   
+    'weatherList': {
+        'cities': [],
+        'nextCityId': 1,
+    },
+    'currentCity': {
+        'id': 0
+    }  
 }
 
-export const DEFAULT_COORDS = '';
+export const DEFAULT_COORDS = {
+    'longitude': 30.32,
+    'latitude': 59.94
+};

@@ -1,10 +1,11 @@
 import React from 'react';
 
-
 class Weather extends React.Component {
   constructor(props) {
     super(props);
+  }
 
+  componentDidMount() {
     this.props.fetchWeather();
   }
   
@@ -14,12 +15,18 @@ class Weather extends React.Component {
         <div className="Weather">
           {this.props.data.name}
           {this.props.data.weather.weather[0].main}
-          <button onClick={this.props.deleteCity}>x</button>
+          {this.props.data.id !== 0 && 
+            <button onClick={this.props.deleteCity}>x</button>
+          }
         </div>
+      );
+    } else if (this.props.data.id !== 0) {
+      return (
+        <div className="Weather">{this.props.data.name}</div>
       );
     } else {
       return (
-        <div className="Weather">{this.props.data.name}</div>
+        <div className="Weather">{this.props.data.id}</div>
       );
     }
   }
