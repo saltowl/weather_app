@@ -10,7 +10,27 @@ import thunk from 'redux-thunk';
 import rootReducer from './store/reducers';
 import {INITIAL_STATE} from './constants';
 
-const store = createStore(rootReducer, INITIAL_STATE, applyMiddleware(thunk));
+const cities = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : [];
+const nextCityId = cities.length > 0 
+    ? cities.reduce((prev, cur) => {
+        return Math.max(prev.id, cur.id);
+    }, {id: 0}) + 1 
+    : 1;
+
+const state = {
+    ...INITIAL_STATE, 
+    weatherList: {
+        ...INITIAL_STATE.weatherList, 
+        cities, 
+        nextCityId
+    }
+};
+
+const store = createStore(rootReducer, state, applyMiddleware(thunk));
+
+store.subscribe(() => {
+    localStorage['redux-store'] = JSON.stringify(store.getState().weatherList.cities.map(city => ({id: city.id, name: city.name})));
+});
 
 ReactDOM.render(
     <Provider store={store}>
