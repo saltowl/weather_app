@@ -14,6 +14,7 @@ class Weather extends React.Component {
         <div className="Weather">
           {this.props.data.name}
           {this.props.data.weather.weather[0].main}
+          <button onClick={this.props.deleteCity}>x</button>
         </div>
       );
     } else {

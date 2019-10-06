@@ -18,7 +18,7 @@ class AddCity extends React.Component {
       <div className="AddCity">
           <form onSubmit={this.handleInput}>
               <input ref={this.textInput} />
-              <button type="submit">Add</button>
+              <button type="submit">+</button>
           </form>
       </div>
     );

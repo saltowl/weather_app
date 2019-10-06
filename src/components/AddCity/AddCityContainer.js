@@ -9,8 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addCity: name => dispatch(addCity(name)),
-  deleteCity: id => dispatch(deleteCity(id))
+  addCity: name => dispatch(addCity(name))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCity);

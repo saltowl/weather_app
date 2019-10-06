@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from '../../store/actions';
+import { fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess, deleteCity } from '../../store/actions';
 import axios from 'axios';
 import WeatherList from './WeatherList';
 import { getCities, getNextCityId } from '../../store/reducers';
@@ -27,7 +27,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchWeather: (id, name) => fetchWeatherAction(dispatch, id, name)
+    fetchWeather: (id, name) => fetchWeatherAction(dispatch, id, name),
+    deleteCity: id => dispatch(deleteCity(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherList);
