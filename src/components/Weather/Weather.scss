@@ -1,0 +1,79 @@
+#wind {
+  margin-right: 10px;
+  height: 25px;
+  width: 25px;
+  border: 3px white outset;
+  border-radius: 50%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    ". N ."
+    "W windDirection E"
+    ". S .";
+}
+
+#wind > div {
+  align-self: center;
+  justify-self: center;
+  font-size: 7px;
+  font-family: monospace;
+}
+
+$compass-items: N, W, windDirection, E, S;
+
+@each $item in $compass-items {
+  ##{$item} {
+    grid-area: $item;
+  }
+}
+
+#windDirection > div {
+    font-size: 8px;
+}
+
+$rowColor: #707e89;
+
+.Weather {
+  color: #3d6787;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.Weather > .mainInfo,
+.Weather > .mainInfo > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row {
+  margin: 3px 0;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  background: $rowColor;
+  color: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.rowKey {
+  font-weight: bold;
+}
+
+.rowVal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: normal;
+}

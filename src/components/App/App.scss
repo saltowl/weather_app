@@ -1,0 +1,83 @@
+$app-width: 700px;
+
+.App {
+  z-index: 100;
+  background: white;
+  width: $app-width;
+  opacity: 0.9;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 7px #c9dbe9 double;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.WeatherList {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 25px;
+  color: #3d6787;
+  font-weight: normal;
+  text-align: left;
+}
+
+.control {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#addCity {
+  background: #c9dbe9;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px #c9dbe9 inset;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+button {
+  background: #c9dbe9;
+  color: #3d6787;
+  border: 2px #c9dbe9 outset;
+  border-radius: 8px;
+  margin-left: 10px !important;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #d29d57;
+  border-color: #d5cbab;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  border-style: inset;
+}
+
+.circle {
+  background: #3d6787;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  color: white;
+  border-style: none;
+}

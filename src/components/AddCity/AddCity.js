@@ -17,8 +17,8 @@ class AddCity extends React.Component {
     return (
       <div className="AddCity">
           <form onSubmit={this.handleInput}>
-              <input ref={this.textInput} />
-              <button type="submit">+</button>
+              <input id='addCity' ref={this.textInput} placeholder='Add new city'/>
+              <button type="submit" className='circle'>+</button>
           </form>
       </div>
     );
