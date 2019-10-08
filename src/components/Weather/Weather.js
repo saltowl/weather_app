@@ -18,8 +18,19 @@ class Weather extends React.Component {
     const styleCurrentCityTemp = this.props.data.id !== 0 ? {} : {fontSize: '50px'};
     const styleCurrentCityName = this.props.data.id !== 0 ? {} : {alignSelf: 'flex-start'};
     const dataRow = this.props.data.id !== 0 ? {width: '100%'} : {width: '50%', paddingLeft: '20px', boxSizing: 'border-box'};
+    const styleError = {color: '#FC000D', flexDirection: 'row'};
 
-    if (this.props.data.pending === false) {
+    if (this.props.data.error) {
+      const error = this.props.data.error;
+      return (
+        <div className="Weather" style={styleError}>
+          {error.response.status === 404 &&
+              <div>{this.props.data.name} isn't found</div>
+          }
+          <button onClick={this.props.deleteCity} className='circle'>x</button>
+        </div>
+      );
+    } else if (this.props.data.pending === false) {
       const data = this.props.data.weather;
 
       const temp = `${(data.main.temp < 0 ? '' : '+')}${(data.main.temp).toFixed(1)} °C`;

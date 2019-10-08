@@ -15,8 +15,6 @@ export const fetchWeatherByNameAction = (dispatch, id, cityName) => {
         .catch(error => {
             dispatch(fetchWeatherError(error, id));
             console.log(error);
-            if (error.response.status === 404) {
-            }
         });
 }
 
