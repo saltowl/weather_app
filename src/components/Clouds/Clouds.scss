@@ -1,0 +1,105 @@
+*{ margin: 0; padding: 0;}
+
+body {
+	/*To hide the horizontal scroller appearing during the animation*/
+	overflow-x: hidden;
+}
+
+.clouds{
+	padding: 100px 0;
+	background: #c9dbe9;
+	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 100vh;
+}
+
+.cloud {
+	width: 200px; 
+	height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; 
+	height: 80px;
+	position: absolute; 
+	top: -15px; 
+	left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; 
+	height: 120px;
+	top: -55px;
+	left: auto;
+	right: 15px;
+}
+
+@mixin setupCloud($left, $top, $size, $speed) {
+	left: $left;
+	top: $top;
+	
+	-webkit-transform: scale($size);
+	-moz-transform: scale($size);
+	transform: scale($size);
+	opacity: $size; /*opacity proportional to the size*/
+	
+	/*Speed will also be proportional to the size and opacity*/
+	/*More the speed. Less the time in 's' = seconds*/
+	-webkit-animation: moveclouds $speed linear infinite;
+	-moz-animation: moveclouds $speed linear infinite;
+	-o-animation: moveclouds $speed linear infinite;	
+}
+
+@function randomNum($min, $max) {
+	$rand: random();
+	$randomNum: $min + floor($rand * (($max - $min) + 1));
+  
+	@return $randomNum;
+}
+
+$clouds: x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
+
+@each $cloud in $clouds {
+	.#{$cloud} {
+		@include setupCloud(#{randomNum(-30, 30)}vw, #{randomNum(-5, 20)}vh, #{randomNum(5, 10) / 10}, #{randomNum(30, 50)}s);
+	}
+}
+
+@keyframes moveclouds {
+	0% {margin-left: 100vw;}
+	100% {margin-left: -100vw;}
+}
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 100vw;}
+	100% {margin-left: -100vw;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 100vw;}
+	100% {margin-left: -100vw;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 100vw;}
+	100% {margin-left: -100vw;}
+}
