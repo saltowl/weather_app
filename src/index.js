@@ -11,11 +11,9 @@ import rootReducer from './store/reducers';
 import {INITIAL_STATE} from './constants';
 
 const cities = localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : [];
-const nextCityId = cities.length > 0 
-    ? cities.reduce((prev, cur) => {
-        return Math.max(prev.id, cur.id);
-    }, {id: 0}) + 1 
-    : 1;
+const nextCityId = cities.reduce((prev, cur) => {
+    return Math.max(prev, cur.id);
+}, 0) + 1;
 
 const state = {
     ...INITIAL_STATE, 
