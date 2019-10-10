@@ -21,7 +21,7 @@ class App extends React.Component {
             <button onClick={() => this.props.fetchWeatherByCoords()}>Update geolocation</button>
           </div>
           <Weather key={0} data={this.props.currentCity} fetchWeather={() => this.props.fetchWeatherByCoords()}/>
-          <div className='control'>
+          <div className='control favourites'>
             <h2>Favorites</h2>
             <AddCity />
           </div>

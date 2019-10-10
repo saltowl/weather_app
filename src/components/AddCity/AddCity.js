@@ -4,13 +4,12 @@ class AddCity extends React.Component {
   constructor(props) {
     super(props);
 
-    this.textInput = React.createRef();
     this.handleFormInput = this.handleFormInput.bind(this);
   }
 
   handleFormInput(e) {
     e.preventDefault();
-    this.props.addCity(this.textInput.current.value);
+    this.props.addCity(e.target[0].value);
   }
 
   render() {
@@ -19,7 +18,6 @@ class AddCity extends React.Component {
         <form onSubmit={this.handleFormInput}>
           <input
             id="addCity"
-            ref={this.textInput}
             placeholder="Add new city"
             required
           />

@@ -81,3 +81,31 @@ button:active {
   color: white;
   border-style: none;
 }
+
+@media screen and (max-width: 715px) {
+  $app-width: 300px;
+
+  .App {
+    width: $app-width;
+  } 
+
+  .Weather {
+    width: 100%;
+  }
+
+  .control {
+    width: 100% !important;
+  }
+
+  .favourites {
+    flex-direction: column !important;
+  }
+
+  h2:first-of-type {
+    text-align: center;
+  }
+
+  #addCity {
+    width: 190px;
+  }
+}

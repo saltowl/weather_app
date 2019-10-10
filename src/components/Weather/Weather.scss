@@ -29,7 +29,7 @@ $compass-items: N, W, windDirection, E, S;
 }
 
 #windDirection > div {
-    font-size: 8px;
+  font-size: 8px;
 }
 
 $rowColor: #707e89;
@@ -76,4 +76,64 @@ $rowColor: #707e89;
   flex-direction: row;
   align-items: center;
   font-weight: normal;
+}
+
+.temp {
+  font-size: 50px;
+}
+
+.current {
+  flex-direction: row-reverse !important;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.currentName {
+  align-self: flex-start;
+}
+
+.error {
+  color: #fc000d;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px !important;
+  align-items: center;
+  font-weight: bold;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 715px) {
+  .Weather {
+    width: 100%;
+    flex-direction: column !important;
+  }
+
+  .Weather > div {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .cityMain {
+    padding: 0 !important;
+    order: 3;
+  }
+
+  .mainInfo:not(.current) {
+    flex-wrap: wrap;
+  }
+
+  .name {
+    min-width: 60%;
+  }
+
+  .temp {
+    font-size: 40px !important;
+    white-space: nowrap;
+  }
+
+  .error {
+    width: 100%;
+  }
 }

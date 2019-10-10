@@ -14,16 +14,12 @@ class Weather extends React.Component {
   render() {
     const styleWeather = this.props.data.id !== 0 ? {flexDirection: 'column'} : {flexDirection: 'row', width: '100%', fontSize: '30px'};
     const styleMainInfo = this.props.data.id !== 0 ? {flexDirection: 'row'} : {flexDirection: 'column', width: '50%', paddingRight: '20px'};
-    const styleCurrentCityMain = this.props.data.id !== 0 ? {} : {flexDirection: 'row-reverse', width: '100%', paddingRight: '20px'};
-    const styleCurrentCityTemp = this.props.data.id !== 0 ? {} : {fontSize: '50px'};
-    const styleCurrentCityName = this.props.data.id !== 0 ? {} : {alignSelf: 'flex-start'};
     const dataRow = this.props.data.id !== 0 ? {width: '100%'} : {width: '50%', paddingLeft: '20px', boxSizing: 'border-box'};
-    const styleError = {color: '#FC000D', flexDirection: 'row'};
 
     if (this.props.data.error) {
       const error = this.props.data.error;
       return (
-        <div className="Weather" style={styleError}>
+        <div className="Weather" className='error'>
           {error.response.status === 404 &&
               <div>{this.props.data.name} isn't found</div>
           }
@@ -33,7 +29,7 @@ class Weather extends React.Component {
     } else if (this.props.data.pending === false) {
       const data = this.props.data.weather;
 
-      const temp = `${(data.main.temp < 0 ? '' : '+')}${(data.main.temp).toFixed(1)} °C`;
+      const temp = `${(data.main.temp < 0 ? '' : '+')}${(data.main.temp).toFixed(1)}°C`;
       const icon = this.props.data.id !== 0 
       ? `https://openweathermap.org/img/wn/${data.weather[0].icon}.png` 
       : `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${data.weather[0].icon}.png`;
@@ -53,12 +49,12 @@ class Weather extends React.Component {
       return (
         <div className="Weather" style={styleWeather}>
           <div className="mainInfo" style={styleMainInfo}>
-            <div style={styleCurrentCityName}>{data.name}</div>
-            <div style={styleCurrentCityMain}>
-              <div style={styleCurrentCityTemp}>{temp}</div>
+            <div className={this.props.data.id === 0 ? 'currentName' : 'name'}>{data.name}</div>
+            <div className={`${this.props.data.id === 0 ? 'current' : ''} cityMain`} >
+              <div className={this.props.data.id === 0 ? 'temp' : ''}>{temp}</div>
               <img src={icon} title={description} />
             </div>
-            <div style={styleCurrentCityMain}>
+            <div className={this.props.data.id === 0 ? 'current' : ''}>
               {this.props.data.id !== 0 && 
                 <button onClick={this.props.deleteCity} className='circle'>x</button>
               }
