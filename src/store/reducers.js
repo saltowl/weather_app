@@ -1,5 +1,5 @@
 import * as constants from '../constants';
-import { combineReducers } from 'C:/Users/leven/AppData/Local/Microsoft/TypeScript/3.6/node_modules/redux';
+import { combineReducers } from 'redux';
 
 const weatherReducer = (state = constants.INITIAL_STATE.weatherList, action = {}) => {
     let changedCities = [];
