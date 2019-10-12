@@ -18,42 +18,44 @@ const fetchWeather = (dispatch, coords, id) => {
         });
 }
 
-export const fetchWeatherByCoordsAction = (dispatch) => {
-    const id = 0;
-    const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-    };
-
-    dispatch(fetchWeatherPending(id));
-
-    if (!navigator.geolocation) {
-        const error = 'Geolocation is not supported';
-        dispatch(fetchWeatherError(error, id));
-        console.log(error);
-    } else {
-        navigator.geolocation.getCurrentPosition((position) => {
-            fetchWeather(dispatch, position.coords, id);
-        }, err => {
-            switch(err.code) {
-                case 1:
-                    alert('Permission denied. Load weather from default coordinates');
-                    fetchWeather(dispatch, DEFAULT_COORDS, id);
-                    break;
-                case 2:
-                    alert('Location unavailable. Load weather from default coordinates');
-                    fetchWeather(dispatch, DEFAULT_COORDS, id);
-                    break;
-                case 3:
-                    dispatch(fetchWeatherError(err, id));    
-                    break;
-                default:
-                    dispatch(fetchWeatherError(err, id));
-                    console.warn(`ERROR(${err.code}): ${err.message}`);
-                    break;
-            }
-        }, options);
+export const fetchWeatherByCoordsAction = () => {
+    return dispatch => {
+        const id = 0;
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+    
+        dispatch(fetchWeatherPending(id));
+    
+        if (!navigator.geolocation) {
+            const error = 'Geolocation is not supported';
+            dispatch(fetchWeatherError(error, id));
+            console.log(error);
+        } else {
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetchWeather(dispatch, position.coords, id);
+            }, err => {
+                switch(err.code) {
+                    case 1:
+                        alert('Permission denied. Load weather from default coordinates');
+                        fetchWeather(dispatch, DEFAULT_COORDS, id);
+                        break;
+                    case 2:
+                        alert('Location unavailable. Load weather from default coordinates');
+                        fetchWeather(dispatch, DEFAULT_COORDS, id);
+                        break;
+                    case 3:
+                        dispatch(fetchWeatherError(err, id));    
+                        break;
+                    default:
+                        dispatch(fetchWeatherError(err, id));
+                        console.warn(`ERROR(${err.code}): ${err.message}`);
+                        break;
+                }
+            }, options);
+        }    
     }
 }
 
@@ -63,7 +65,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchWeatherByCoords: () => fetchWeatherByCoordsAction(dispatch)
+    fetchWeatherByCoords: () => dispatch(fetchWeatherByCoordsAction())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
