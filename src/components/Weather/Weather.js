@@ -18,12 +18,14 @@ class Weather extends React.Component {
 
     if (this.props.data.error) {
       const error = this.props.data.error;
+      let notFound = false;
+      if (typeof error.response !== 'undefined') {
+        notFound = error.response.status === 404;
+      }
       return (
-        <div className="Weather" className='error'>
-          {error.response.status === 404 &&
-              <div>{this.props.data.name} isn't found</div>
-          }
-          <button onClick={this.props.deleteCity} className='circle'>x</button>
+        <div className='Weather error'>
+          {notFound ? <div>{this.props.data.name} isn't found</div> : <div>Poor connection. Please, try again later</div>}
+          {this.props.data.id !== 0 && <button onClick={this.props.deleteCity} className='circle'>x</button>}
         </div>
       );
     } else if (this.props.data.pending === false) {
