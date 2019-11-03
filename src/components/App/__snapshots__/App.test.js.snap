@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App display correctly 1`] = `
+<div>
+  <div
+    className="clouds"
+  >
+    <div
+      className="cloud x1"
+    />
+    <div
+      className="cloud x2"
+    />
+    <div
+      className="cloud x3"
+    />
+    <div
+      className="cloud x4"
+    />
+    <div
+      className="cloud x5"
+    />
+    <div
+      className="cloud x6"
+    />
+    <div
+      className="cloud x7"
+    />
+    <div
+      className="cloud x8"
+    />
+    <div
+      className="cloud x9"
+    />
+    <div
+      className="cloud x10"
+    />
+  </div>
+  <div
+    className="App"
+  >
+    <div
+      className="control"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+          "width": "67%",
+        }
+      }
+    >
+      <h2>
+        Weather here
+      </h2>
+      <button
+        onClick={[Function]}
+      >
+        Update geolocation
+      </button>
+    </div>
+    <div
+      className="Weather"
+      style={
+        Object {
+          "flexDirection": "row",
+          "fontSize": "30px",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="mainInfo"
+        style={
+          Object {
+            "flexDirection": "column",
+            "paddingRight": "20px",
+            "width": "50%",
+          }
+        }
+      >
+        <div
+          className="currentName"
+        >
+          Moscow
+        </div>
+        <div
+          className="current cityMain"
+        >
+          <div
+            className="temp"
+          >
+            -2.4°C
+          </div>
+          <img
+            src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/13d.png"
+            title="Light shower snow"
+          />
+        </div>
+        <div
+          className="current"
+        />
+      </div>
+      <div
+        style={
+          Object {
+            "boxSizing": "border-box",
+            "paddingLeft": "20px",
+            "width": "50%",
+          }
+        }
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="rowKey"
+          >
+            Wind:
+          </div>
+          <div
+            className="rowVal"
+          >
+            <div
+              id="wind"
+            >
+              <div
+                id="N"
+              >
+                N
+              </div>
+              <div
+                id="W"
+              >
+                W
+              </div>
+              <div
+                id="windDirection"
+              >
+                <div
+                  style={
+                    Object {
+                      "OTransform": "rotate(290deg)",
+                      "WebkitTransform": "rotate(290deg)",
+                      "msTransform": "rotate(290deg)",
+                      "transform": "rotate(290deg)",
+                    }
+                  }
+                >
+                  ↑
+                </div>
+              </div>
+              <div
+                id="E"
+              >
+                E
+              </div>
+              <div
+                id="S"
+              >
+                S
+              </div>
+            </div>
+            6 m/s
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="rowKey"
+          >
+            Clouds:
+          </div>
+          <div
+            className="rowVal"
+          >
+            75
+            %
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="rowKey"
+          >
+            Pressure:
+          </div>
+          <div
+            className="rowVal"
+          >
+            766 mmHg
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="rowKey"
+          >
+            Humidity:
+          </div>
+          <div
+            className="rowVal"
+          >
+            79%
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="rowKey"
+          >
+            Coords:
+          </div>
+          <div
+            className="rowVal"
+          >
+            [
+            37.62
+            , 
+            55.75
+            ]
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="control favourites"
+    >
+      <h2>
+        Favorites
+      </h2>
+      <div
+        className="AddCity"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            id="addCity"
+            placeholder="Add new city"
+            required={true}
+          />
+          <button
+            className="circle"
+            type="submit"
+          >
+            +
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      className="WeatherList"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,438 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather in the current city has been loaded 1`] = `
+<div
+  className="Weather"
+  style={
+    Object {
+      "flexDirection": "row",
+      "fontSize": "30px",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="mainInfo"
+    style={
+      Object {
+        "flexDirection": "column",
+        "paddingRight": "20px",
+        "width": "50%",
+      }
+    }
+  >
+    <div
+      className="currentName"
+    >
+      Moscow
+    </div>
+    <div
+      className="current cityMain"
+    >
+      <div
+        className="temp"
+      >
+        -2.4°C
+      </div>
+      <img
+        src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/13d.png"
+        title="Light shower snow"
+      />
+    </div>
+    <div
+      className="current"
+    />
+  </div>
+  <div
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "paddingLeft": "20px",
+        "width": "50%",
+      }
+    }
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Wind:
+      </div>
+      <div
+        className="rowVal"
+      >
+        <div
+          id="wind"
+        >
+          <div
+            id="N"
+          >
+            N
+          </div>
+          <div
+            id="W"
+          >
+            W
+          </div>
+          <div
+            id="windDirection"
+          >
+            <div
+              style={
+                Object {
+                  "OTransform": "rotate(290deg)",
+                  "WebkitTransform": "rotate(290deg)",
+                  "msTransform": "rotate(290deg)",
+                  "transform": "rotate(290deg)",
+                }
+              }
+            >
+              ↑
+            </div>
+          </div>
+          <div
+            id="E"
+          >
+            E
+          </div>
+          <div
+            id="S"
+          >
+            S
+          </div>
+        </div>
+        6 m/s
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Clouds:
+      </div>
+      <div
+        className="rowVal"
+      >
+        75
+        %
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Pressure:
+      </div>
+      <div
+        className="rowVal"
+      >
+        766 mmHg
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Humidity:
+      </div>
+      <div
+        className="rowVal"
+      >
+        79%
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Coords:
+      </div>
+      <div
+        className="rowVal"
+      >
+        [
+        37.62
+        , 
+        55.75
+        ]
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Weather in the current city has not been loaded 1`] = `
+<div
+  className="Weather error"
+>
+  <div>
+    Poor connection. Please, try again later
+  </div>
+</div>
+`;
+
+exports[`Weather in the current city is pending 1`] = `
+<div
+  className="Weather"
+  style={
+    Object {
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <div
+    className="Loader"
+  >
+    <div>
+      Please wait, data is loading
+    </div>
+    <div>
+      <i
+        className="fas fa-spinner fa-pulse"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Weather in the weather list has been loaded 1`] = `
+<div
+  className="Weather"
+  style={
+    Object {
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    className="mainInfo"
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <div
+      className="name"
+    >
+      Moscow
+    </div>
+    <div
+      className=" cityMain"
+    >
+      <div
+        className=""
+      >
+        -2.4°C
+      </div>
+      <img
+        src="https://openweathermap.org/img/wn/13d.png"
+        title="Light shower snow"
+      />
+    </div>
+    <div
+      className=""
+    >
+      <button
+        className="circle"
+      >
+        x
+      </button>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Wind:
+      </div>
+      <div
+        className="rowVal"
+      >
+        <div
+          id="wind"
+        >
+          <div
+            id="N"
+          >
+            N
+          </div>
+          <div
+            id="W"
+          >
+            W
+          </div>
+          <div
+            id="windDirection"
+          >
+            <div
+              style={
+                Object {
+                  "OTransform": "rotate(290deg)",
+                  "WebkitTransform": "rotate(290deg)",
+                  "msTransform": "rotate(290deg)",
+                  "transform": "rotate(290deg)",
+                }
+              }
+            >
+              ↑
+            </div>
+          </div>
+          <div
+            id="E"
+          >
+            E
+          </div>
+          <div
+            id="S"
+          >
+            S
+          </div>
+        </div>
+        6 m/s
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Clouds:
+      </div>
+      <div
+        className="rowVal"
+      >
+        75
+        %
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Pressure:
+      </div>
+      <div
+        className="rowVal"
+      >
+        766 mmHg
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Humidity:
+      </div>
+      <div
+        className="rowVal"
+      >
+        79%
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="rowKey"
+      >
+        Coords:
+      </div>
+      <div
+        className="rowVal"
+      >
+        [
+        37.62
+        , 
+        55.75
+        ]
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Weather in the weather list has been loaded 2`] = `
+<div
+  className="Weather error"
+>
+  <div>
+    Poor connection. Please, try again later
+  </div>
+  <button
+    className="circle"
+  >
+    x
+  </button>
+</div>
+`;
+
+exports[`Weather in the weather list is pending 1`] = `
+<div
+  className="Weather"
+  style={
+    Object {
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "padding": "8px",
+      }
+    }
+  />
+  <div
+    className="Loader"
+  >
+    <div>
+      Please wait, data is loading
+    </div>
+    <div>
+      <i
+        className="fas fa-spinner fa-pulse"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Weather in the weather list with 'city not found' error 1`] = `
+<div
+  className="Weather error"
+>
+  <div>
+     isn't found
+  </div>
+  <button
+    className="circle"
+  >
+    x
+  </button>
+</div>
+`;

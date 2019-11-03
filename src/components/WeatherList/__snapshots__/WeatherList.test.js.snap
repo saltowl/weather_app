@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty WeatherList display correctly 1`] = `
+<div
+  className="WeatherList"
+/>
+`;
+
+exports[`Filled WeatherList display correctly 1`] = `
+<div
+  className="WeatherList"
+>
+  <div
+    className="Weather"
+    style={
+      Object {
+        "flexDirection": "column",
+      }
+    }
+  >
+    <div
+      className="mainInfo"
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <div
+        className="name"
+      >
+        Moscow
+      </div>
+      <div
+        className=" cityMain"
+      >
+        <div
+          className=""
+        >
+          -2.4°C
+        </div>
+        <img
+          src="https://openweathermap.org/img/wn/13d.png"
+          title="Light shower snow"
+        />
+      </div>
+      <div
+        className=""
+      >
+        <button
+          className="circle"
+          onClick={[Function]}
+        >
+          x
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="rowKey"
+        >
+          Wind:
+        </div>
+        <div
+          className="rowVal"
+        >
+          <div
+            id="wind"
+          >
+            <div
+              id="N"
+            >
+              N
+            </div>
+            <div
+              id="W"
+            >
+              W
+            </div>
+            <div
+              id="windDirection"
+            >
+              <div
+                style={
+                  Object {
+                    "OTransform": "rotate(290deg)",
+                    "WebkitTransform": "rotate(290deg)",
+                    "msTransform": "rotate(290deg)",
+                    "transform": "rotate(290deg)",
+                  }
+                }
+              >
+                ↑
+              </div>
+            </div>
+            <div
+              id="E"
+            >
+              E
+            </div>
+            <div
+              id="S"
+            >
+              S
+            </div>
+          </div>
+          6 m/s
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="rowKey"
+        >
+          Clouds:
+        </div>
+        <div
+          className="rowVal"
+        >
+          75
+          %
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="rowKey"
+        >
+          Pressure:
+        </div>
+        <div
+          className="rowVal"
+        >
+          766 mmHg
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="rowKey"
+        >
+          Humidity:
+        </div>
+        <div
+          className="rowVal"
+        >
+          79%
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="rowKey"
+        >
+          Coords:
+        </div>
+        <div
+          className="rowVal"
+        >
+          [
+          37.62
+          , 
+          55.75
+          ]
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Weather error"
+  >
+    <div>
+      Poor connection. Please, try again later
+    </div>
+    <button
+      className="circle"
+      onClick={[Function]}
+    >
+      x
+    </button>
+  </div>
+</div>
+`;

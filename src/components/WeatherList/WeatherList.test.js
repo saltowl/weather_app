@@ -1,9 +1,6 @@
 import React from "react";
-import App from "./App";
+import WeatherList from "./WeatherList";
 import renderer from "react-test-renderer";
-import configureMockStore from "redux-mock-store";
-import { Provider } from "react-redux";
-import { INITIAL_STATE } from "../../constants";
 
 const correctData = {
   base: "stations",
@@ -35,18 +32,29 @@ const correctData = {
   wind: { speed: 6, deg: 290 }
 };
 
-const mockStore = configureMockStore();
-const state = INITIAL_STATE;
-state.currentCity.weather = correctData;
-state.currentCity.pending = false;
-
-const store = mockStore(state);
-
-it("App display correctly", () => {
+it("Filled WeatherList display correctly", () => {
+  const cities = [
+    { id: 1, pending: false, weather: correctData },
+    { id: 2, pending: false, error: {} }
+  ];
   const component = renderer.create(
-    <Provider store={store}>
-      <App fetchWeatherByCoords={() => {}} currentCity={state.currentCity} />
-    </Provider>
+    <WeatherList
+      cities={cities}
+      fetchWeatherByName={() => {}}
+      deleteCity={() => {}}
+    />
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("Empty WeatherList display correctly", () => {
+  const component = renderer.create(
+    <WeatherList
+      cities={[]}
+      fetchWeatherByName={() => {}}
+      deleteCity={() => {}}
+    />
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCity display correctly 1`] = `
+<div
+  className="AddCity"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      id="addCity"
+      placeholder="Add new city"
+      required={true}
+    />
+    <button
+      className="circle"
+      type="submit"
+    >
+      +
+    </button>
+  </form>
+</div>
+`;
