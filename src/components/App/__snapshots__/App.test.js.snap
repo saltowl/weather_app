@@ -257,3 +257,98 @@ exports[`App display correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`App display without currentCity 1`] = `
+<div>
+  <div
+    className="clouds"
+  >
+    <div
+      className="cloud x1"
+    />
+    <div
+      className="cloud x2"
+    />
+    <div
+      className="cloud x3"
+    />
+    <div
+      className="cloud x4"
+    />
+    <div
+      className="cloud x5"
+    />
+    <div
+      className="cloud x6"
+    />
+    <div
+      className="cloud x7"
+    />
+    <div
+      className="cloud x8"
+    />
+    <div
+      className="cloud x9"
+    />
+    <div
+      className="cloud x10"
+    />
+  </div>
+  <div
+    className="App"
+  >
+    <div
+      className="control"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+          "width": "67%",
+        }
+      }
+    >
+      <h2>
+        Weather here
+      </h2>
+      <button
+        onClick={[Function]}
+      >
+        Update geolocation
+      </button>
+    </div>
+    <div
+      className="Weather"
+    >
+      Cannot get current city
+    </div>
+    <div
+      className="control favourites"
+    >
+      <h2>
+        Favorites
+      </h2>
+      <div
+        className="AddCity"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            id="addCity"
+            placeholder="Add new city"
+            required={true}
+          />
+          <button
+            className="circle"
+            type="submit"
+          >
+            +
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      className="WeatherList"
+    />
+  </div>
+</div>
+`;

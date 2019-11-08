@@ -51,3 +51,13 @@ it("App display correctly", () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+it("App display without currentCity", () => {
+  const component = renderer.create(
+    <Provider store={store}>
+      <App fetchWeatherByCoords={() => {}} />
+    </Provider>
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});

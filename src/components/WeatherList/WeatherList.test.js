@@ -59,3 +59,15 @@ it("Empty WeatherList display correctly", () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+it("Cities is a string, not an array", () => {
+  const component = renderer.create(
+    <WeatherList
+      cities={''}
+      fetchWeatherByName={() => {}}
+      deleteCity={() => {}}
+    />
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});

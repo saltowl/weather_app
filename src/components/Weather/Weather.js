@@ -6,14 +6,22 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      pending:
-        typeof this.props.data.pending !== "undefined"
-          ? this.props.data.pending
-          : true,
-      isError: typeof this.props.data.error !== "undefined",
-      isCurrentCity: this.props.data.id === 0
-    };
+    if (typeof this.props.data !== 'undefined') {
+      this.state = {
+        pending:
+          typeof this.props.data.pending !== "undefined"
+            ? this.props.data.pending
+            : true,
+        isError: typeof this.props.data.error !== "undefined",
+        isCurrentCity: this.props.data.id === 0
+      };
+    } else {
+      this.state = {
+        isError: false,
+        isCurrentCity: true,
+        error: 'Cannot get current city'
+      };
+    }
   }
 
   componentDidMount() {
@@ -22,6 +30,7 @@ class Weather extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
+      typeof prevState.error === 'undefined' &&
       typeof nextProps.data.pending !== "undefined" &&
       nextProps.data.pending !== prevState.pending
     ) {
@@ -33,13 +42,15 @@ class Weather extends React.Component {
   }
 
   render() {
-    const styleWeather = !this.state.isCurrentCity
+    const cityInWeatherList = !this.state.isCurrentCity;
+    
+    const styleWeather = cityInWeatherList
       ? { flexDirection: "column" }
       : { flexDirection: "row", width: "100%", fontSize: "30px" };
-    const styleMainInfo = !this.state.isCurrentCity
+    const styleMainInfo = cityInWeatherList
       ? { flexDirection: "row" }
       : { flexDirection: "column", width: "50%", paddingRight: "20px" };
-    const dataRow = !this.state.isCurrentCity
+    const dataRow = cityInWeatherList
       ? { width: "100%" }
       : { width: "50%", paddingLeft: "20px", boxSizing: "border-box" };
 
@@ -56,14 +67,14 @@ class Weather extends React.Component {
           ) : (
             <div>Poor connection. Please, try again later</div>
           )}
-          {!this.state.isCurrentCity && (
+          {cityInWeatherList && (
             <button onClick={this.props.deleteCity} className="circle">
               x
             </button>
           )}
         </div>
       );
-    } else if (!this.state.pending) {
+    } else if (!this.state.pending && typeof this.state.error === 'undefined') {
       const data = this.props.data.weather;
 
       const temp = `${data.main.temp < 0 ? "" : "+"}${data.main.temp.toFixed(
@@ -106,7 +117,7 @@ class Weather extends React.Component {
               <img src={icon} title={description} />
             </div>
             <div className={this.state.isCurrentCity ? "current" : ""}>
-              {!this.state.isCurrentCity && (
+              {cityInWeatherList && (
                 <button onClick={this.props.deleteCity} className="circle">
                   x
                 </button>
@@ -150,13 +161,19 @@ class Weather extends React.Component {
           </div>
         </div>
       );
-    } else {
+    } else if (this.state.pending && typeof this.state.error === 'undefined') {
       return (
         <div className="Weather" style={{ justifyContent: "flex-start" }}>
-          {!this.state.isCurrentCity && (
+          {cityInWeatherList && (
             <div style={{ padding: "8px" }}>{this.props.data.name}</div>
           )}
           <Loader />
+        </div>
+      );
+    } else {
+      return (
+        <div className="Weather">
+          {this.state.error}
         </div>
       );
     }

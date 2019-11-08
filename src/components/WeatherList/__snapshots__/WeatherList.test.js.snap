@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Cities is a string, not an array 1`] = `
+<div
+  className="WeatherList"
+/>
+`;
+
 exports[`Empty WeatherList display correctly 1`] = `
 <div
   className="WeatherList"
