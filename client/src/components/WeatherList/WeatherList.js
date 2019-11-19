@@ -5,6 +5,10 @@ class WeatherList extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount(){
+    this.props.fetchCities();
+  }
   
   render() {
     if (Array.isArray(this.props.cities)) {
