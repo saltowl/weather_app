@@ -176,7 +176,7 @@ exports[`Weather in the current city has not been loaded 1`] = `
   className="Weather error"
 >
   <div>
-    Poor connection. Please, try again later
+    Cannot load weather. Please, try again later
   </div>
 </div>
 `;
@@ -194,7 +194,9 @@ exports[`Weather in the current city is pending 1`] = `
     className="Loader"
   >
     <div>
-      Please wait, data is loading
+      Please wait, 
+      data is loading
+       
     </div>
     <div>
       <i
@@ -381,7 +383,7 @@ exports[`Weather in the weather list has been loaded 2`] = `
   className="Weather error"
 >
   <div>
-    Poor connection. Please, try again later
+    Cannot load weather. Please, try again later
   </div>
   <button
     className="circle"
@@ -411,7 +413,9 @@ exports[`Weather in the weather list is pending 1`] = `
     className="Loader"
   >
     <div>
-      Please wait, data is loading
+      Please wait, 
+      data is loading
+       
     </div>
     <div>
       <i

@@ -1,9 +1,10 @@
 import React from "react";
-import App from "./App";
+import App from "./AppContainer";
 import renderer from "react-test-renderer";
 import configureMockStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import { INITIAL_STATE } from "../../constants";
+import thunk from "redux-thunk";
 
 const correctData = {
   base: "stations",
@@ -35,17 +36,21 @@ const correctData = {
   wind: { speed: 6, deg: 290 }
 };
 
-const mockStore = configureMockStore();
+const mockStore = configureMockStore([thunk]);
 const state = INITIAL_STATE;
-state.currentCity.weather = correctData;
-state.currentCity.pending = false;
-
-const store = mockStore(state);
 
 it("App display correctly", () => {
+  state.currentCity.weather = correctData;
+  state.currentCity.pending = false;
+
+  const store = mockStore(state);
+
   const component = renderer.create(
     <Provider store={store}>
-      <App fetchWeatherByCoords={() => {}} currentCity={state.currentCity} />
+      <App
+        fetchWeatherByCoords={jest.fn(() => {})}
+        fetchCities={jest.fn(() => {})}
+      />
     </Provider>
   );
   let tree = component.toJSON();
@@ -53,9 +58,16 @@ it("App display correctly", () => {
 });
 
 it("App display without currentCity", () => {
+  state.currentCity = undefined;
+
+  const store = mockStore(state);
+
   const component = renderer.create(
     <Provider store={store}>
-      <App fetchWeatherByCoords={() => {}} />
+      <App
+        fetchWeatherByCoords={jest.fn(() => {})}
+        fetchCities={jest.fn(() => {})}
+      />
     </Provider>
   );
   let tree = component.toJSON();

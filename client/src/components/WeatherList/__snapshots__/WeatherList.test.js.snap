@@ -12,6 +12,42 @@ exports[`Empty WeatherList display correctly 1`] = `
 />
 `;
 
+exports[`Error while fetching WeatherList 1`] = `
+<div
+  className="WeatherList"
+>
+  <div
+    className="Error"
+  >
+    <div>
+      Cannot 
+      fetch cities
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Fetching WeatherList display correctly 1`] = `
+<div
+  className="WeatherList"
+>
+  <div
+    className="Loader"
+  >
+    <div>
+      Please wait, 
+      cities are fetching
+       
+    </div>
+    <div>
+      <i
+        className="fas fa-spinner fa-pulse"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Filled WeatherList display correctly 1`] = `
 <div
   className="WeatherList"
@@ -189,7 +225,7 @@ exports[`Filled WeatherList display correctly 1`] = `
     className="Weather error"
   >
     <div>
-      Poor connection. Please, try again later
+      Cannot load weather. Please, try again later
     </div>
     <button
       className="circle"

@@ -1,6 +1,10 @@
 import React from "react";
 import WeatherList from "./WeatherList";
 import renderer from "react-test-renderer";
+import configureMockStore from "redux-mock-store";
+import { Provider } from "react-redux";
+import { INITIAL_STATE } from "../../constants";
+import thunk from "redux-thunk";
 
 const correctData = {
   base: "stations",
@@ -32,17 +36,27 @@ const correctData = {
   wind: { speed: 6, deg: 290 }
 };
 
+const mockStore = configureMockStore([thunk]);
+const state = INITIAL_STATE;
+state.currentCity.weather = correctData;
+state.currentCity.pending = false;
+
+const store = mockStore(state);
+
 it("Filled WeatherList display correctly", () => {
   const cities = [
     { id: 1, pending: false, weather: correctData },
     { id: 2, pending: false, error: {} }
   ];
   const component = renderer.create(
-    <WeatherList
-      cities={cities}
-      fetchWeatherByName={() => {}}
-      deleteCity={() => {}}
-    />
+    <Provider store={store}>
+      <WeatherList
+        cities={cities}
+        fetchWeatherByName={() => {}}
+        deleteCity={() => {}}
+        fetchCities={() => {}}
+      />
+    </Provider>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -50,11 +64,48 @@ it("Filled WeatherList display correctly", () => {
 
 it("Empty WeatherList display correctly", () => {
   const component = renderer.create(
-    <WeatherList
-      cities={[]}
-      fetchWeatherByName={() => {}}
-      deleteCity={() => {}}
-    />
+    <Provider store={store}>
+      <WeatherList
+        cities={[]}
+        fetchWeatherByName={() => {}}
+        deleteCity={() => {}}
+        fetchCities={() => {}}
+      />
+    </Provider>
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("Fetching WeatherList display correctly", () => {
+  const component = renderer.create(
+    <Provider store={store}>
+      <WeatherList
+        cities={[]}
+        fetchWeatherByName={() => {}}
+        deleteCity={() => {}}
+        fetchCities={() => {}}
+        error={null}
+        isFetching={true}
+      />
+    </Provider>
+  );
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+it("Error while fetching WeatherList", () => {
+  const component = renderer.create(
+    <Provider store={store}>
+      <WeatherList
+        cities={[]}
+        fetchWeatherByName={() => {}}
+        deleteCity={() => {}}
+        fetchCities={() => {}}
+        error={1}
+        isFetching={true}
+      />
+    </Provider>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -62,11 +113,14 @@ it("Empty WeatherList display correctly", () => {
 
 it("Cities is a string, not an array", () => {
   const component = renderer.create(
-    <WeatherList
-      cities={''}
-      fetchWeatherByName={() => {}}
-      deleteCity={() => {}}
-    />
+    <Provider store={store}>
+      <WeatherList
+        cities={""}
+        fetchWeatherByName={() => {}}
+        deleteCity={() => {}}
+        fetchCities={() => {}}
+      />
+    </Provider>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

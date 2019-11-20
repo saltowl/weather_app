@@ -5,7 +5,9 @@ exports[`Loader display correctly 1`] = `
   className="Loader"
 >
   <div>
-    Please wait, data is loading
+    Please wait, 
+    data is loading
+     
   </div>
   <div>
     <i
