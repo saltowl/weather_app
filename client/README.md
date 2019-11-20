@@ -1,6 +1,6 @@
 ## What is it?
 
-This application displays the weather at the current location when allowing access to the location. If you deny access to your current location, this application displays the weather in St. Petersburg. You can also add cities to your favorites and monitor the weather in them even after reloading the page.
+This is the frontend of the app.
 
 ## Instruction for use
 
@@ -12,11 +12,11 @@ This application displays the weather at the current location when allowing acce
 
 `npm start` from the project directory
 
-### Run tests:
-
-`npm test` from the project directory
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### Run tests:
+
+`npm test` from the project directory
