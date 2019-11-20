@@ -14,13 +14,15 @@ app.use((req, res, next) => {
 
 const mongoDB = 'mongodb+srv://saltowl:eadghe@weather-3uans.mongodb.net/weather_db?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('DB connected'))
-  .catch((err) => console.log('DB error', err))
+  .then(() => {
+      console.log('DB connected');
+      
+      app.use(logger('dev'));
+      app.use(express.json());
+      app.use(express.urlencoded({ extended: false }));
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-app.use('/', index_router);
+      app.use('/', index_router);
+    })
+  .catch((err) => console.log('DB error', err));
 
 export default app;
