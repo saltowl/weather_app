@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import axios from "axios";
 import WeatherList from "./WeatherList";
-import { getCities } from "../../store/reducers";
+import * as selectors from "../../store/reducers";
 import { API } from "../../constants";
 
 const fetchWeatherByNameAction = (id, cityName) => {
@@ -49,7 +49,11 @@ const fetchCitiesAction = () => {
 };
 
 const mapStateToProps = state => ({
-  cities: getCities(state)
+  cities: selectors.getCities(state),
+  error: selectors.getError(state),
+  isFetching: selectors.getIsFetching(state),
+  newCity: selectors.getNewCity(state),
+  cityToDelete: selectors.getCityToDelete(state)
 });
 
 const mapDispatchToProps = dispatch => ({

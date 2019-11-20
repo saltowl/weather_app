@@ -59,7 +59,7 @@ const weatherListReducer = (
     case constants.FETCH_CITIES_ERROR:
       return {
           ...state,
-          isFetching: false,
+          isFetching: true,
           error: action.error
       };
     
@@ -81,8 +81,7 @@ const weatherListReducer = (
     case constants.ADD_CITY_ERROR:
       return {
         ...state,
-        error: action.error,
-        newCity: null
+        error: action.error
       };
 
     case constants.DELETE_CITY_PENDING:
@@ -103,8 +102,7 @@ const weatherListReducer = (
     case constants.DELETE_CITY_ERROR:
       return {
         ...state,
-        error: action.error,
-        cityToDelete: null
+        error: action.error
       };
 
     default:
@@ -146,8 +144,14 @@ const currentCityReducer = (
   }
 };
 
-export const getCities = state => state.weatherList.cities;
 export const getCurrentCity = state => state.currentCity;
+
+export const getCities = state => state.weatherList.cities;
+export const getError = state => state.weatherList.error;
+export const getIsFetching = state => state.weatherList.isFetching;
+export const getNewCity = state => state.weatherList.newCity;
+export const getCityToDelete = state => state.weatherList.cityToDelete;
+
 
 export default combineReducers({
   weatherList: weatherListReducer,

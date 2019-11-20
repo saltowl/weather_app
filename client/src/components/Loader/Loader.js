@@ -9,7 +9,7 @@ class Loader extends React.Component {
   render() {
     return (
       <div className="Loader">
-        <div>Please wait, data is loading</div>
+        <div>Please wait, {this.props.message} </div>
         <div><i className="fas fa-spinner fa-pulse"></i></div>
       </div>
     );
